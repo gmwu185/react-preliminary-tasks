@@ -22,33 +22,12 @@ const App = () => {
       </nav>
       <div className="conatiner todoListPage vhContainer">
         <div className="todoList_Content">
-          <div className="inputBox">
-            <input
-              type="text"
-              placeholder="請輸入待辦事項"
-              value={newTodo}
-              onChange={(e) => setNewTodo(e.target.value)}
-            />
-            <a
-              href="#"
-              onClick={(e) => {
-                if (!newTodo) {
-                  alert('請正確輸入文字內容！');
-                } else {
-                  const addNewTodoObj = {
-                    content: newTodo,
-                    id: Date.now(),
-                    finish: false,
-                  };
-                  setTodos([addNewTodoObj, ...todos]);
-                  setNewTodo('');
-                }
-              }}
-            >
-              <i className="fa fa-plus"></i>
-            </a>
-          </div>
-
+          <NewTodoInput
+            todos={todos}
+            setTodos={setTodos}
+            newTodo={newTodo}
+            setNewTodo={setNewTodo}
+          />
           <div className="todoList_list">
             <ul className="todoList_tab">
               <TodoTab selectType={selectType} setSelectType={setSelectType} />
@@ -62,30 +41,44 @@ const App = () => {
                   selectType={selectType}
                 />
               </ul>
-              <div className="todoList_statistics">
-                <p>
-                  {todos.filter((todo) => todo.finish == true).length}{' '}
-                  個已完成項目
-                </p>
-                <a
-                  href="#"
-                  onClick={() => {
-                    if (todos.filter((item) => item.finish == true).length == 0) {
-                      alert('沒有已完成項目處理清除動作');
-                      return 
-                    };
-                    if (confirm('確定清除全部已完成項目嗎？')) {
-                      setTodos(todos.filter((item) => item.finish == false));
-                    };
-                  }}
-                >
-                  清除已完成項目
-                </a>
-              </div>
+              <Statistics todos={todos} setTodos={setTodos} />
             </div>
           </div>
         </div>
       </div>
+    </div>
+  );
+};
+
+const NewTodoInput = (props) => {
+  const { todos, setTodos, newTodo, setNewTodo } = props;
+
+  return (
+    <div className="inputBox">
+      <input
+        type="text"
+        placeholder="請輸入待辦事項"
+        value={newTodo}
+        onChange={(e) => setNewTodo(e.target.value)}
+      />
+      <a
+        href="#"
+        onClick={(e) => {
+          if (!newTodo) {
+            alert('請正確輸入文字內容！');
+          } else {
+            const addNewTodoObj = {
+              content: newTodo,
+              id: Date.now(),
+              finish: false,
+            };
+            setTodos([addNewTodoObj, ...todos]);
+            setNewTodo('');
+          }
+        }}
+      >
+        <i className="fa fa-plus"></i>
+      </a>
     </div>
   );
 };
@@ -166,6 +159,34 @@ const TodoTab = (props) => {
   });
 
   return tabStatusDOM;
+};
+
+const Statistics = (props) => {
+  const {todos, setTodos} = props;
+  return (
+    <div className="todoList_statistics">
+      <p>
+        {todos.filter((todo) => todo.finish == true).length}{' '}
+        個已完成項目
+      </p>
+      <a
+        href="#"
+        onClick={() => {
+          if (
+            todos.filter((item) => item.finish == true).length == 0
+          ) {
+            alert('沒有已完成項目處理清除動作');
+            return;
+          }
+          if (confirm('確定清除全部已完成項目嗎？')) {
+            setTodos(todos.filter((item) => item.finish == false));
+          }
+        }}
+      >
+        清除已完成項目
+      </a>
+    </div>
+  )
 };
 
 const root = ReactDOM.createRoot(document.querySelector('#root'));
