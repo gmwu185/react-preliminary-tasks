@@ -11,6 +11,8 @@ const App = () => {
     { id: 5, content: '約vicky禮拜三泡溫泉', finish: false },
     { id: 6, content: '約ada禮拜四吃晚餐', finish: false },
   ]);
+  const [selectType, setSelectType] = useState('all');
+
   return (
     <div className="bg-half">
       <nav>
@@ -49,22 +51,16 @@ const App = () => {
 
           <div className="todoList_list">
             <ul className="todoList_tab">
-              <li>
-                <a href="#" className="active">
-                  全部
-                </a>
-              </li>
-              <li>
-                <a href="#">待完成</a>
-              </li>
-              <li>
-                <a href="#">已完成</a>
-              </li>
+              <TodoTab selectType={selectType} setSelectType={setSelectType} />
             </ul>
 
             <div className="todoList_items">
               <ul className="todoList_item">
-                <TodoItem todos={todos} setTodos={setTodos} />
+                <TodoItem
+                  todos={todos}
+                  setTodos={setTodos}
+                  selectType={selectType}
+                />
               </ul>
               <div className="todoList_statistics">
                 <p>{todos.length} 個已完成項目</p>
@@ -86,8 +82,19 @@ const App = () => {
 };
 
 const TodoItem = (props) => {
-  const { todos, setTodos } = props;
-  return todos.map((todo, i) => {
+  const { todos, setTodos, selectType } = props;
+
+  let todoData = [];
+  console.log('TodoItem selectType', selectType);
+  if (selectType == 'all') {
+    todoData = todos;
+  } else if (selectType == 'finish') {
+    todoData = todos.filter((todo, i) => todo.finish == true);
+  } else if (selectType == 'unfinish') {
+    todoData = todos.filter((todo, i) => todo.finish == false);
+  }
+
+  const todosDOM = todoData.map((todo, i) => {
     return (
       <li key={todo.id}>
         <label className="todoList_label">
@@ -117,6 +124,42 @@ const TodoItem = (props) => {
       </li>
     );
   });
+
+  return todosDOM;
+};
+
+const TodoTab = (props) => {
+  const { selectType, setSelectType } = props;
+
+  const [tabStatus, setTabStatus] = useState([
+    { type: 'all', text: '全部', active: true },
+    { type: 'unfinish', text: '待完成', active: false },
+    { type: 'finish', text: '已完成', active: false },
+  ]);
+
+  const tabStatusDOM = tabStatus.map((item, i) => {
+    return (
+      <li key={i}>
+        <a
+          href="#"
+          className={item.active ? 'active' : ''}
+          onClick={(e) => {
+            const changeActive = tabStatus.filter((item, i) => {
+              e.target.text == item.text
+                ? ((item.active = true), setSelectType(item.type))
+                : (item.active = false);
+              return item;
+            });
+            setTabStatus(changeActive);
+          }}
+        >
+          {item.text}
+        </a>
+      </li>
+    );
+  });
+
+  return tabStatusDOM;
 };
 
 const root = ReactDOM.createRoot(document.querySelector('#root'));
