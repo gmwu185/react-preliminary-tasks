@@ -63,11 +63,20 @@ const App = () => {
                 />
               </ul>
               <div className="todoList_statistics">
-                <p>{todos.length} 個已完成項目</p>
+                <p>
+                  {todos.filter((todo) => todo.finish == true).length}{' '}
+                  個已完成項目
+                </p>
                 <a
                   href="#"
                   onClick={() => {
-                    setTodos(todos.filter((item) => item.finish == false));
+                    if (todos.filter((item) => item.finish == true).length == 0) {
+                      alert('沒有已完成項目處理清除動作');
+                      return 
+                    };
+                    if (confirm('確定清除全部已完成項目嗎？')) {
+                      setTodos(todos.filter((item) => item.finish == false));
+                    };
                   }}
                 >
                   清除已完成項目
@@ -83,9 +92,7 @@ const App = () => {
 
 const TodoItem = (props) => {
   const { todos, setTodos, selectType } = props;
-
   let todoData = [];
-  console.log('TodoItem selectType', selectType);
   if (selectType == 'all') {
     todoData = todos;
   } else if (selectType == 'finish') {
@@ -93,7 +100,6 @@ const TodoItem = (props) => {
   } else if (selectType == 'unfinish') {
     todoData = todos.filter((todo, i) => todo.finish == false);
   }
-
   const todosDOM = todoData.map((todo, i) => {
     return (
       <li key={todo.id}>
@@ -129,7 +135,7 @@ const TodoItem = (props) => {
 };
 
 const TodoTab = (props) => {
-  const { selectType, setSelectType } = props;
+  const { setSelectType } = props;
 
   const [tabStatus, setTabStatus] = useState([
     { type: 'all', text: '全部', active: true },
