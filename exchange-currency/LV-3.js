@@ -5,10 +5,6 @@
 console.clear();
 const { useState, useEffect } = React;
 function App() {
-  // const newCurrency = {
-  //   name: '',
-  //   rate: 0,
-  // };
   const [newCurrencyName, setNewCurrencyName] = useState('');
   const [newCurrencyRate, setNewCurrencyRate] = useState("");
   const fixedCurrency = [
@@ -28,7 +24,6 @@ function App() {
     if (e.target.value == '') {
       alert('幣種名稱未輸入資料');
     } else {
-      // newCurrency.name = e.target.value;
       setNewCurrencyName(e.target.value);
     }
   };
@@ -42,12 +37,10 @@ function App() {
       alert('輸入數值與大於 0');
       e.target.value = '';
     } else {
-      // newCurrency.rate = e.target.value;
       setNewCurrencyRate(e.target.value);
     }
   };
   const addCurrencyList = () => {
-    // console.log('newCurrency', newCurrency)
     if (newCurrencyName && newCurrencyRate) {
       setCurrencyList([...currencyList, {
         name: newCurrencyName,
