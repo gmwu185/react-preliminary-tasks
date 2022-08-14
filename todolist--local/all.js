@@ -2,7 +2,7 @@ console.clear();
 const { useState } = React;
 
 const App = () => {
-  const [todos, setToDos] = useState([
+  const [todos, setTodos] = useState([
     { id: 1, content: '把冰箱發霉的檸檬拿去丟', finish: false },
     { id: 2, content: '打電話叫媽媽匯款給我', finish: true },
     { id: 3, content: '整理電腦資料夾', finish: false },
@@ -43,11 +43,18 @@ const App = () => {
 
             <div className="todoList_items">
               <ul className="todoList_item">
-                <TodoItem todos={todos} />
+                <TodoItem todos={todos} setTodos={setTodos} />
               </ul>
               <div className="todoList_statistics">
-                <p>5 個已完成項目</p>
-                <a href="#">清除已完成項目</a>
+                <p>{todos.length} 個已完成項目</p>
+                <a
+                  href="#"
+                  onClick={() => {
+                    setTodos(todos.filter((item) => item.finish == false));
+                  }}
+                >
+                  清除已完成項目
+                </a>
               </div>
             </div>
           </div>
@@ -58,7 +65,7 @@ const App = () => {
 };
 
 const TodoItem = (props) => {
-  const { todos } = props;
+  const { todos, setTodos } = props;
   return todos.map((todo, i) => {
     return (
       <li key={todo.id}>
@@ -66,11 +73,24 @@ const TodoItem = (props) => {
           <input
             className="todoList_input"
             type="checkbox"
-            defaultChecked={todo.finish}
+            checked={todo.finish}
+            onChange={() =>
+              setTodos(
+                todos.map((item) => {
+                  if (item.id == todo.id) {
+                    item.finish = !item.finish;
+                  }
+                  return item;
+                })
+              )
+            }
           />
           <span>{todo.content}</span>
         </label>
-        <a href="#">
+        <a
+          href="#"
+          onClick={() => setTodos(todos.filter((item) => item.id !== todo.id))}
+        >
           <i className="fa fa-times"></i>
         </a>
       </li>
