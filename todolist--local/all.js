@@ -2,6 +2,7 @@ console.clear();
 const { useState } = React;
 
 const App = () => {
+  const [newTodo, setNewTodo] = useState('');
   const [todos, setTodos] = useState([
     { id: 1, content: '把冰箱發霉的檸檬拿去丟', finish: false },
     { id: 2, content: '打電話叫媽媽匯款給我', finish: true },
@@ -20,8 +21,28 @@ const App = () => {
       <div className="conatiner todoListPage vhContainer">
         <div className="todoList_Content">
           <div className="inputBox">
-            <input type="text" placeholder="請輸入待辦事項" />
-            <a href="#">
+            <input
+              type="text"
+              placeholder="請輸入待辦事項"
+              value={newTodo}
+              onChange={(e) => setNewTodo(e.target.value)}
+            />
+            <a
+              href="#"
+              onClick={(e) => {
+                if (!newTodo) {
+                  alert('請正確輸入文字內容！');
+                } else {
+                  const addNewTodoObj = {
+                    content: newTodo,
+                    id: Date.now(),
+                    finish: false,
+                  };
+                  setTodos([addNewTodoObj, ...todos]);
+                  setNewTodo('');
+                }
+              }}
+            >
               <i className="fa fa-plus"></i>
             </a>
           </div>
