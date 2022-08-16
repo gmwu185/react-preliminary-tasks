@@ -613,4 +613,11 @@ nav ul a span {
   text-decoration: none;
 }
 
+.todoList_list .noTodo {
+  border-bottom: 1px solid #e5e5e5;
+  justify-content: center;
+  line-height: 20.27px;
+  padding-bottom: 15px;
+}
+
 /*# sourceMappingURL=all.css.map */

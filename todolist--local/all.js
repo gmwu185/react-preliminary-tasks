@@ -93,38 +93,43 @@ const TodoItem = (props) => {
   } else if (selectType == 'unfinish') {
     todoData = todos.filter((todo, i) => todo.finish == false);
   }
-  const todosDOM = todoData.map((todo, i) => {
-    return (
-      <li key={todo.id}>
-        <label className="todoList_label">
-          <input
-            className="todoList_input"
-            type="checkbox"
-            checked={todo.finish}
-            onChange={() =>
-              setTodos(
-                todos.map((item) => {
-                  if (item.id == todo.id) {
-                    item.finish = !item.finish;
-                  }
-                  return item;
-                })
-              )
-            }
-          />
-          <span>{todo.content}</span>
-        </label>
-        <a
-          href="#"
-          onClick={() => setTodos(todos.filter((item) => item.id !== todo.id))}
-        >
-          <i className="fa fa-times"></i>
-        </a>
-      </li>
-    );
-  });
 
-  return todosDOM;
+  return todos.length > 0 ? (
+    todoData.map((todo, i) => {
+      return (
+        <li key={todo.id}>
+          <label className="todoList_label">
+            <input
+              className="todoList_input"
+              type="checkbox"
+              checked={todo.finish}
+              onChange={() =>
+                setTodos(
+                  todos.map((item) => {
+                    if (item.id == todo.id) {
+                      item.finish = !item.finish;
+                    }
+                    return item;
+                  })
+                )
+              }
+            />
+            <span>{todo.content}</span>
+          </label>
+          <a
+            href="#"
+            onClick={() =>
+              setTodos(todos.filter((item) => item.id !== todo.id))
+            }
+          >
+            <i className="fa fa-times"></i>
+          </a>
+        </li>
+      );
+    })
+  ) : (
+    <li className="noTodo">目前尚無代辦事項</li>
+  );
 };
 
 const TodoTab = (props) => {
@@ -136,7 +141,7 @@ const TodoTab = (props) => {
     { type: 'finish', text: '已完成', active: false },
   ]);
 
-  const tabStatusDOM = tabStatus.map((item, i) => {
+  return tabStatus.map((item, i) => {
     return (
       <li key={i}>
         <a
@@ -157,24 +162,17 @@ const TodoTab = (props) => {
       </li>
     );
   });
-
-  return tabStatusDOM;
 };
 
 const Statistics = (props) => {
-  const {todos, setTodos} = props;
+  const { todos, setTodos } = props;
   return (
     <div className="todoList_statistics">
-      <p>
-        {todos.filter((todo) => todo.finish == true).length}{' '}
-        個已完成項目
-      </p>
+      <p>{todos.filter((todo) => todo.finish == true).length} 個已完成項目</p>
       <a
         href="#"
         onClick={() => {
-          if (
-            todos.filter((item) => item.finish == true).length == 0
-          ) {
+          if (todos.filter((item) => item.finish == true).length == 0) {
             alert('沒有已完成項目處理清除動作');
             return;
           }
@@ -186,7 +184,7 @@ const Statistics = (props) => {
         清除已完成項目
       </a>
     </div>
-  )
+  );
 };
 
 const root = ReactDOM.createRoot(document.querySelector('#root'));
