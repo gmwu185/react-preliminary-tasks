@@ -168,7 +168,7 @@ const Statistics = (props) => {
   const { todos, setTodos } = props;
   return (
     <div className="todoList_statistics">
-      <p>{todos.filter((todo) => todo.finish == true).length} 個已完成項目</p>
+      <p>{todos.filter((todo) => todo.finish == false).length} 個未完成項目</p>
       <a
         href="#"
         onClick={() => {
