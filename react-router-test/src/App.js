@@ -48,6 +48,22 @@ function FQA() {
   )
 }
 
+function NotFound() {
+  return (
+    <>
+      <main>
+        <h2>輸入網址錯誤</h2>
+        <p>
+          請查明或回首頁重新操作
+        </p>
+      </main>
+      <nav>
+        <Link to="/">Home</Link>
+      </nav>
+    </>
+  )
+}
+
 function App() {
   return (
     <div className="App">
@@ -56,6 +72,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="about" element={<About />} />
         <Route path="faq" element={<FQA />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );
