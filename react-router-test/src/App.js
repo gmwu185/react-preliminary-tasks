@@ -9,7 +9,7 @@ function Home() {
         <p>You can do this, I believe in you.</p>
       </main>
       <nav>
-        <Link to="/about">About</Link>
+        <Link to="/about">About</Link> | <Link to="/faq">FQA</Link>
       </nav>
     </>
   );
@@ -26,10 +26,26 @@ function About() {
         </p>
       </main>
       <nav>
-        <Link to="/">Home</Link>
+        <Link to="/">Home</Link> | <Link to="/faq">FQA</Link>
       </nav>
     </>
   );
+}
+
+function FQA() {
+  return (
+    <>
+      <main>
+        <h2>FQA</h2>
+        <p>
+          This FQA Page text...
+        </p>
+      </main>
+      <nav>
+        <Link to="/">Home</Link> | <Link to="/about">About</Link>
+      </nav>
+    </>
+  )
 }
 
 function App() {
@@ -39,6 +55,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="about" element={<About />} />
+        <Route path="faq" element={<FQA />} />
       </Routes>
     </div>
   );
