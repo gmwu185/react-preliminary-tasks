@@ -12,4 +12,4 @@
 
 ======
 ## week-3-task (React Router)
-- [[LV-1 (react-router-test)](https://gmwu185.github.io/react-preliminary-tasks/react-router-test/build/#/faq)
+- [LV-1 (react-router-test)](https://gmwu185.github.io/react-preliminary-tasks/react-router-test/build/#/faq)
