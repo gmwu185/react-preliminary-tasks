@@ -22,6 +22,7 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Route>
         <Route path="admin" element={<AdminLayout />}>
+          <Route index element={<DashboardHome />} />
           <Route path="home" element={<DashboardHome />} />
           <Route path="member" element={<DashboardMember />} />
           <Route path="*" element={<NotFound />} />
