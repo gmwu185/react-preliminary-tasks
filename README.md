@@ -12,5 +12,7 @@
 
 ======
 ## week-3-task (React Router)
-- [LV-1 (creat react app 部署 GitHub)](https://gmwu185.github.io/react-preliminary-tasks/react-router-test/build/#/faq)
-- [LV-2 (高雄旅遊網)](#)
+- [LV-1 (creat react app 部署 GitHub)](https://gmwu185.github.io/react-preliminary-tasks/react-router-test/build/#/)
+- [LV-2 (基隆旅遊網)](https://gmwu185.github.io/react-preliminary-tasks/react-keelung-travel/build/#/)
+  - [政府資料開放平臺-基隆旅遊網-基隆旅遊網相關景點/餐廳/住宿等旅遊相關資料 (API 介接)](https://data.gov.tw/dataset/129333)
+  - [基隆旅遊網 (文案出處)](https://tour.klcg.gov.tw/zh-hant/)
