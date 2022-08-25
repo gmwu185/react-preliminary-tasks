@@ -8,9 +8,6 @@ import Tour from './components/Tour';
 import TourDetail from './components/TourDetail';
 import TourList from './components/TourList';
 
-// import logo from './logo.svg';
-import './App.css';
-
 function App() {
   return (
     <div className="App">
@@ -22,8 +19,8 @@ function App() {
             <Route index element={<TourList />} />
             <Route path=":Id" element={<TourDetail />} />
           </Route>
-          <Route path="*" element={<NotFound />} />
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );
