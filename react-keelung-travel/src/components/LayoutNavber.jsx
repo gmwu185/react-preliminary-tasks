@@ -8,7 +8,7 @@ const LayoutNavber = () => {
     >
       <div className="container">
         <Link className="navbar-brand" to="/">
-          Pacific<span>Travel Agency</span>
+          Keelung<span>基隆旅遊網</span>
         </Link>
         <button
           className="navbar-toggler"

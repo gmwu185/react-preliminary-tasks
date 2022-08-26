@@ -317,8 +317,8 @@ h1, h2, h3, h4, h5,
 	font-size: 24px;
 	line-height: 1.2;
 	span{
-		font-size: 10px;
-		font-weight: 600;
+		font-size: 14px;
+		font-weight: 400;
 		color: rgba(255,255,255,.9);
 		color: $primary;
 		display: block;
@@ -1077,11 +1077,11 @@ textarea.form-control {
 
 
 .ftco-section {
-	margin-top: -7em;
+	padding: 7em 0;
 	position: relative;
 	width: 100%;
 	@include media-breakpoint-down(sm){
-		margin-top: -6em;
+		padding: 6em 0;
 	}
 }
 
