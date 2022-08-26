@@ -29,7 +29,8 @@ function TourList() {
                         }}
                       >
                         <span className="price">
-                          {item.ticket_price === '無門票' ||
+                          {item.ticket_price === '無' ||
+                          item.ticket_price === '無門票' ||
                           item.ticket_price === '免門票'
                             ? '免費無需門票'
                             : '有收費或限制'}

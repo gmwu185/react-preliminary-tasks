@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route } from 'react-router-dom';
 
 import NotFound from './components/NotFound';
 import Layout from './components/Layout';
@@ -7,7 +7,7 @@ import About from './components/About';
 import Tour from './components/Tour';
 import TourDetail from './components/TourDetail';
 import TourList from './components/TourList';
-import AutoScrollToTop from './components/AutoScrollToTop'
+import AutoScrollToTop from './components/AutoScrollToTop';
 
 function App() {
   return (
