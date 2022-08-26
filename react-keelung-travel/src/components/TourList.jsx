@@ -1,14 +1,17 @@
 import { Link, useOutletContext } from 'react-router-dom';
-import ImageHeader from './ImageHeader';
+import BreadcrumbHeader from './BreadcrumbHeader';
 
 function TourList() {
   const [tourDatas] = useOutletContext();
 
   return (
     <>
-      <ImageHeader bgImgPath="https://tour.klcg.gov.tw/media/klcgtour/attractions/6263832/21eb35e5-a706-4ada-baac-3278753cfea7.jpg" />
+      <BreadcrumbHeader
+        bgImgPath="https://tour.klcg.gov.tw/media/klcgtour/attractions/6263832/21eb35e5-a706-4ada-baac-3278753cfea7.jpg"
+        atPage="旅遊基隆"
+        title="旅遊景點列表"
+      />
       <section className="ftco-section">
-        {/* <h3>旅遊詳細列表</h3> */}
         <div className="container">
           <ul className="row list-unstyled">
             {tourDatas.length > 0 ? (

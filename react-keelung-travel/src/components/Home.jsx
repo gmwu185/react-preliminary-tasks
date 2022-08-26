@@ -14,7 +14,10 @@ function Home() {
                 <p>
                   基隆，不只有大家熟知的廟口夜市，往海邊有著美麗繽紛的正濱漁港，懷舊的老漁港在夕陽餘暉之下更顯動人；往山邊的山丘，讓基隆擁抱著海洋與山丘，愜意的吹著山風俯瞰海洋，就像是有著豐富故事，等著旅人們，來去基隆探訪有趣的景點及文化吧。
                 </p>
-                <Link to="tour" className="btn btn-primary py-3 px-4 mb-5 mb-lg-3">
+                <Link
+                  to="tour"
+                  className="btn btn-primary py-3 px-4 mb-5 mb-lg-3"
+                >
                   查詢旅遊基隆資訊
                 </Link>
               </div>
