@@ -1,9 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { HashRouter } from "react-router-dom";
+import { HashRouter } from 'react-router-dom';
 import './scss/style.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+import $ from 'jquery';
+if ($) {
+  const bootstrap = require('bootstrap/dist/js/bootstrap.bundle.min');
+  window.jQuery = window.$ = $;
+  window.bootstrap = bootstrap;
+};
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

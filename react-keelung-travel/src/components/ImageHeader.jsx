@@ -6,6 +6,7 @@ const ImageHeader = (props) => {
         backgroundImage: `url(${props.bgImgPath})`,
       }}
     >
+      <div className="overlay"></div>
       <div className="container">
         <div
           className="row no-gutters slider-text js-fullheight align-items-center"
