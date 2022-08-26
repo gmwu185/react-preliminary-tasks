@@ -10,7 +10,7 @@ import TourList from './components/TourList';
 
 function App() {
   return (
-    <div className="App">
+    <>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route path="/" element={<Home />} />
@@ -22,7 +22,7 @@ function App() {
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </div>
+    </>
   );
 }
 

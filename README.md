@@ -16,3 +16,5 @@
 - [LV-2 (基隆旅遊網)](https://gmwu185.github.io/react-preliminary-tasks/react-keelung-travel/build/#/)
   - [政府資料開放平臺-基隆旅遊網-基隆旅遊網相關景點/餐廳/住宿等旅遊相關資料 (API 介接)](https://data.gov.tw/dataset/129333)
   - [基隆旅遊網 (文案出處)](https://tour.klcg.gov.tw/zh-hant/)
+  - [旅遊 Bootstrap 4 樣版](https://themewagon.com/themes/free-modern-bootstrap-4-html5-travel-website-template-pacific/)、[相關列表](https://themewagon.com/theme-tag/travel-tourism/?swoof=1&pa_price=free&really_curr_tax=495-product_tag)
+  - [React 引入 npm node-scss](https://www.youtube.com/watch?v=Q-0P6jnGtvY)、[npm node](https://www.npmjs.com/package/node-scss)
