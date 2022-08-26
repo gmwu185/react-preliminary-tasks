@@ -3,10 +3,15 @@ const ImageHeader = (props) => {
     <div
       className="hero-wrap js-fullheight"
       style={{
-        backgroundImage: `url(${props.bgImgPath})`,
+        backgroundImage: `url(${
+          props.bgImgPath ===
+          'https://tour.klcg.gov.tw/media/klcgtour/attractions/10484882/cover_image.tif'
+            ? 'images/大武崙砲台.jpg'
+            : props.bgImgPath
+        })`,
       }}
     >
-      <div className="overlay"></div>
+      {/* <div className="overlay"></div> */}
       <div className="container">
         <div
           className="row no-gutters slider-text js-fullheight align-items-center"

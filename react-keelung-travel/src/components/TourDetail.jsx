@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useOutletContext, useParams, useNavigate } from 'react-router-dom';
+import ImageHeader from './ImageHeader';
 
 function TourDetail() {
   const para_id = useParams().Id;
@@ -37,8 +38,9 @@ function TourDetail() {
         <span>資料載入中…</span>
       ) : (
         <div>
+          <ImageHeader bgImgPath={tourData.cover_image} />
+          {/* <img src={tourData.cover_image} alt={tourData.title} /> */}
           <h2>{tourData.title}</h2>
-          <img src={tourData.cover_image} alt={tourData.title} />
           <p>{tourData.address}</p>
           <p style={{whiteSpace: "pre-line"}}>{tourData.visit_hours}</p>
           <p style={{whiteSpace: "pre-line"}}>{tourData.ticket_price}</p>
