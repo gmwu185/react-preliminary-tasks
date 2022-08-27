@@ -16,7 +16,7 @@ function About() {
                 <div className="col-md-6 d-flex align-items-stretch">
                   <div
                     className="img d-flex w-100 align-items-center justify-content-center"
-                    style={{ backgroundImage: `url(images/about_cover.jpg)` }}
+                    style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/images/about_cover.jpg)` }}
                   ></div>
                 </div>
                 <div className="col-md-6 pl-md-5 py-5">

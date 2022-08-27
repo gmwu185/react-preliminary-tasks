@@ -8,7 +8,7 @@ const BreadcrumbHeader = (props) => {
         backgroundImage: `url(${
           props.bgImgPath ===
           'https://tour.klcg.gov.tw/media/klcgtour/attractions/10484882/cover_image.tif'
-            ? 'images/大武崙砲台.jpg'
+            ? `${process.env.PUBLIC_URL}/images/大武崙砲台.jpg`
             : props.bgImgPath
         })`,
       }}

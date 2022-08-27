@@ -33,7 +33,7 @@ function TourList() {
   return (
     <>
       <BreadcrumbHeader
-        bgImgPath="https://tour.klcg.gov.tw/media/klcgtour/attractions/6263832/21eb35e5-a706-4ada-baac-3278753cfea7.jpg"
+        bgImgPath={`${process.env.PUBLIC_URL}/images/tour_cover.png`}
         atPage="旅遊基隆"
         title="旅遊景點列表"
       />
@@ -105,7 +105,7 @@ function TourList() {
         </div>
       </section>
 
-      <section className="ftco-section pt-3">
+      <section className="ftco-section pt-3 pb-0">
         <div className="container">
           <ul className="row list-unstyled">
             {changeAreaData.length > 0 ? (
@@ -120,7 +120,7 @@ function TourList() {
                           backgroundImage: `url(${
                             item.cover_image ===
                             'https://tour.klcg.gov.tw/media/klcgtour/attractions/10484882/cover_image.tif'
-                              ? 'images/大武崙砲台.jpg'
+                              ? `${process.env.PUBLIC_URL}/images/大武崙砲台.jpg`
                               : item.cover_image
                           })`,
                         }}

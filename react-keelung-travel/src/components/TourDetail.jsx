@@ -47,7 +47,6 @@ function TourDetail() {
             <div className="container">
               <div className="row">
                 <div className="col-md-12">
-                  {/* <h2>{tourData.title}</h2> */}
                   <ul className="row list-unstyled">
                     <li className="col-md-3 mb-3">
                       <div className="h-100 align-self-stretch box p-4 text-center">

@@ -17,7 +17,7 @@ const ImageHeader = (props) => {
           >
             <span className="fa fa-ship"></span>
           </Link>
-          <div className="col">
+          <div className="col col-md-6">
             <span className="subheading">歡迎來到基隆</span>
             <h1 className="mb-2">
               <span className="d-inline-block">一起發現，</span>
