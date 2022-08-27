@@ -40,7 +40,7 @@ function TourDetail() {
         <div>
           <BreadcrumbHeader
             bgImgPath={tourData.cover_image}
-            atPage="關於基隆"
+            atPage="旅遊基隆"
             title={tourData.title}
           />
           <div className="contact-section py-5">
