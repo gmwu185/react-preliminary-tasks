@@ -7,8 +7,8 @@ const LayoutNavber = () => {
       id="ftco-navbar"
     >
       <div className="container">
-        <Link className="navbar-brand" to="/">
-          Keelung<span>基隆旅遊網</span>
+        <Link className="navbar-brand font-italic" to="/">
+          KeelungTravel<span>基隆旅遊網</span>
         </Link>
         <button
           className="navbar-toggler"

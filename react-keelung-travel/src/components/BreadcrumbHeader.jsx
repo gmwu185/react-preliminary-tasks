@@ -16,7 +16,7 @@ const BreadcrumbHeader = (props) => {
       <div className="overlay"></div>
       <div className="container">
         <div className="row no-gutters slider-text align-items-end justify-content-center vh-100">
-          <div className="col-md-9 pb-5 text-center">
+          <div id="page_title" className="col-md-9 pb-5 text-center">
             <p className="breadcrumbs">
               <span className="mr-2">
                 <Link to="/">

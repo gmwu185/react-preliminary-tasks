@@ -15,10 +15,11 @@ const Pagination = (props) => {
       ...pageCalce,
       current: num,
     });
-    // setInnerPageCalce({
-    //   ...innerPageCalce,
-    //   current: num,
-    // });
+    const EL_page_title = document.querySelector('#page_title');
+    EL_page_title.scrollIntoView({
+      behavior: 'smooth',
+      block: "center",
+    });
   };
   return (
     <>
