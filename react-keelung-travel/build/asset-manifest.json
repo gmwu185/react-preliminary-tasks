@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/react-preliminary-tasks/react-keelung-travel/build/static/css/main.60d95d1f.css",
-    "main.js": "/react-preliminary-tasks/react-keelung-travel/build/static/js/main.1cc3e45c.js",
+    "main.js": "/react-preliminary-tasks/react-keelung-travel/build/static/js/main.503c6a40.js",
     "static/js/787.f6fe0e43.chunk.js": "/react-preliminary-tasks/react-keelung-travel/build/static/js/787.f6fe0e43.chunk.js",
     "static/media/Flaticon.svg": "/react-preliminary-tasks/react-keelung-travel/build/static/media/Flaticon.337e5e921036e0fedf3e.svg",
     "static/media/Flaticon.eot": "/react-preliminary-tasks/react-keelung-travel/build/static/media/Flaticon.26641491f4c469dad32e.eot",
@@ -10,11 +10,11 @@
     "static/media/Flaticon.woff2": "/react-preliminary-tasks/react-keelung-travel/build/static/media/Flaticon.edcb12c99dff6474e2e9.woff2",
     "index.html": "/react-preliminary-tasks/react-keelung-travel/build/index.html",
     "main.60d95d1f.css.map": "/react-preliminary-tasks/react-keelung-travel/build/static/css/main.60d95d1f.css.map",
-    "main.1cc3e45c.js.map": "/react-preliminary-tasks/react-keelung-travel/build/static/js/main.1cc3e45c.js.map",
+    "main.503c6a40.js.map": "/react-preliminary-tasks/react-keelung-travel/build/static/js/main.503c6a40.js.map",
     "787.f6fe0e43.chunk.js.map": "/react-preliminary-tasks/react-keelung-travel/build/static/js/787.f6fe0e43.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.60d95d1f.css",
-    "static/js/main.1cc3e45c.js"
+    "static/js/main.503c6a40.js"
   ]
 }

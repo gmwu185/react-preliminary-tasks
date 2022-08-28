@@ -1,6 +1,14 @@
 const Pagination = (props) => {
   const { pageCalce, setPageCalce } = props;
-  const beforeAndAfterPage = (num) =>
+  const goToPageTitle = () => {
+    const EL_page_title = document.querySelector('#page_title');
+    EL_page_title.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center',
+    });
+  };
+
+  const beforeAndAfterPage = (num) => {
     setPageCalce({
       ...pageCalce,
       current:
@@ -10,16 +18,15 @@ const Pagination = (props) => {
           ? 1
           : pageCalce.current + num,
     });
+    goToPageTitle();
+  };
+
   const goToPage = (num) => {
     setPageCalce({
       ...pageCalce,
       current: num,
     });
-    const EL_page_title = document.querySelector('#page_title');
-    EL_page_title.scrollIntoView({
-      behavior: 'smooth',
-      block: "center",
-    });
+    goToPageTitle();
   };
   return (
     <>
