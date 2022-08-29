@@ -339,6 +339,9 @@ h1, h2, h3, h4, h5,
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-attachment: fixed;
+	@supports(-webkit-touch-callout:none) {
+		background-attachment: initial;
+	}
 	.overlay{
 		position: absolute;
 		top: 0;
@@ -346,8 +349,11 @@ h1, h2, h3, h4, h5,
 		right: 0;
 		bottom: 0;
 		content: '';
-		opacity: .05;
 		background: $black;
+		opacity: .05;
+		@supports(-webkit-touch-callout:none) {
+			opacity: 0;
+		}
 	}
 	&.hero-wrap-2{
 

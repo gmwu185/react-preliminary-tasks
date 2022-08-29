@@ -50,7 +50,7 @@ function TourList() {
   return (
     <>
       <BreadcrumbHeader
-        bgImgPath={`${process.env.PUBLIC_URL}/images/tour_cover.png`}
+        bgImgPath={`${process.env.PUBLIC_URL}/images/tour_cover.jpg`}
         atPage="旅遊基隆"
         title="旅遊景點列表"
       />
