@@ -1,3 +1,6 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus, faTimes } from '@fortawesome/free-solid-svg-icons';
+
 const ToDoList = () => {
   return (
     <div id="todoListPage" className="bg-half">
@@ -21,7 +24,7 @@ const ToDoList = () => {
           <div className="inputBox">
             <input type="text" placeholder="請輸入待辦事項" />
             <a href="#">
-              <i className="fa fa-plus"></i>
+              <FontAwesomeIcon icon={faPlus} />
             </a>
           </div>
           <div className="todoList_list">
@@ -50,7 +53,7 @@ const ToDoList = () => {
                     <span>把冰箱發霉的檸檬拿去丟</span>
                   </label>
                   <a href="#">
-                    <i className="fa fa-times"></i>
+                    <FontAwesomeIcon icon={faTimes} />
                   </a>
                 </li>
                 <li>
@@ -63,7 +66,7 @@ const ToDoList = () => {
                     <span>打電話叫媽媽匯款給我</span>
                   </label>
                   <a href="#">
-                    <i className="fa fa-times"></i>
+                    <FontAwesomeIcon icon={faTimes} />
                   </a>
                 </li>
                 <li>
@@ -76,7 +79,7 @@ const ToDoList = () => {
                     <span>整理電腦資料夾</span>
                   </label>
                   <a href="#">
-                    <i className="fa fa-times"></i>
+                    <FontAwesomeIcon icon={faTimes} />
                   </a>
                 </li>
                 <li>
@@ -89,7 +92,7 @@ const ToDoList = () => {
                     <span>繳電費水費瓦斯費</span>
                   </label>
                   <a href="#">
-                    <i className="fa fa-times"></i>
+                    <FontAwesomeIcon icon={faTimes} />
                   </a>
                 </li>
                 <li>
@@ -102,7 +105,7 @@ const ToDoList = () => {
                     <span>約vicky禮拜三泡溫泉</span>
                   </label>
                   <a href="#">
-                    <i className="fa fa-times"></i>
+                    <FontAwesomeIcon icon={faTimes} />
                   </a>
                 </li>
                 <li>
@@ -115,7 +118,7 @@ const ToDoList = () => {
                     <span>約ada禮拜四吃晚餐</span>
                   </label>
                   <a href="#">
-                    <i className="fa fa-times"></i>
+                    <FontAwesomeIcon icon={faTimes} />
                   </a>
                 </li>
               </ul>
