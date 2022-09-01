@@ -1,7 +1,17 @@
+import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const ToDoList = () => {
+  const [todos, setTodos] = useState([
+    // { id: 1, content: '把冰箱發霉的檸檬拿去丟', finish: false },
+    // { id: 2, content: '打電話叫媽媽匯款給我', finish: true },
+    // { id: 3, content: '整理電腦資料夾', finish: false },
+    // { id: 4, content: '繳電費水費瓦斯費', finish: false },
+    // { id: 5, content: '約vicky禮拜三泡溫泉', finish: false },
+    // { id: 6, content: '約ada禮拜四吃晚餐', finish: false },
+  ]);
+
   return (
     <div id="todoListPage" className="bg-half">
       <nav>
@@ -27,107 +37,53 @@ const ToDoList = () => {
               <FontAwesomeIcon icon={faPlus} />
             </a>
           </div>
-          <div className="todoList_list">
-            <ul className="todoList_tab">
-              <li>
-                <a href="#" className="active">
-                  全部
-                </a>
-              </li>
-              <li>
-                <a href="#">待完成</a>
-              </li>
-              <li>
-                <a href="#">已完成</a>
-              </li>
-            </ul>
-            <div className="todoList_items">
-              <ul className="todoList_item">
+          {todos.length > 0 ? (
+            <div className="todoList_list">
+              <ul className="todoList_tab">
                 <li>
-                  <label className="todoList_label">
-                    <input
-                      className="todoList_input"
-                      type="checkbox"
-                      value="true"
-                    />
-                    <span>把冰箱發霉的檸檬拿去丟</span>
-                  </label>
-                  <a href="#">
-                    <FontAwesomeIcon icon={faTimes} />
+                  <a href="#" className="active">
+                    全部
                   </a>
                 </li>
                 <li>
-                  <label className="todoList_label">
-                    <input
-                      className="todoList_input"
-                      type="checkbox"
-                      value="true"
-                    />
-                    <span>打電話叫媽媽匯款給我</span>
-                  </label>
-                  <a href="#">
-                    <FontAwesomeIcon icon={faTimes} />
-                  </a>
+                  <a href="#">待完成</a>
                 </li>
                 <li>
-                  <label className="todoList_label">
-                    <input
-                      className="todoList_input"
-                      type="checkbox"
-                      value="true"
-                    />
-                    <span>整理電腦資料夾</span>
-                  </label>
-                  <a href="#">
-                    <FontAwesomeIcon icon={faTimes} />
-                  </a>
-                </li>
-                <li>
-                  <label className="todoList_label">
-                    <input
-                      className="todoList_input"
-                      type="checkbox"
-                      value="true"
-                    />
-                    <span>繳電費水費瓦斯費</span>
-                  </label>
-                  <a href="#">
-                    <FontAwesomeIcon icon={faTimes} />
-                  </a>
-                </li>
-                <li>
-                  <label className="todoList_label">
-                    <input
-                      className="todoList_input"
-                      type="checkbox"
-                      value="true"
-                    />
-                    <span>約vicky禮拜三泡溫泉</span>
-                  </label>
-                  <a href="#">
-                    <FontAwesomeIcon icon={faTimes} />
-                  </a>
-                </li>
-                <li>
-                  <label className="todoList_label">
-                    <input
-                      className="todoList_input"
-                      type="checkbox"
-                      value="true"
-                    />
-                    <span>約ada禮拜四吃晚餐</span>
-                  </label>
-                  <a href="#">
-                    <FontAwesomeIcon icon={faTimes} />
-                  </a>
+                  <a href="#">已完成</a>
                 </li>
               </ul>
-              <div className="todoList_statistics">
-                <p> 5 個已完成項目</p>
-                <a href="#">清除已完成項目</a>
+              <div className="todoList_items">
+                <ul className="todoList_item">
+                  {todos.map((todo, i) => {
+                    return (
+                      <li key={todo.id}>
+                        <label className="todoList_label">
+                          <input
+                            className="todoList_input"
+                            type="checkbox"
+                            value="true"
+                          />
+                          <span>{todo.content}</span>
+                        </label>
+                        <a href="#">
+                          <FontAwesomeIcon icon={faTimes} />
+                        </a>
+                      </li>
+                    );
+                  })}
+                </ul>
+                <div className="todoList_statistics">
+                  <p> 5 個已完成項目</p>
+                  <a href="#">清除已完成項目</a>
+                </div>
               </div>
             </div>
-          </div>
+          ) : (
+            <div className="todoList_noTodo">
+              <p className="todoList_noTodo_title">目前尚無待辦事項</p>
+              <img className="todoList_noTodo_img" src="assets/img/on-todo-img.png" alt="" />
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -451,6 +451,8 @@ nav ul a span {
   padding-left: 24px;
   padding-right: 17px;
   padding-bottom: 32px;
+  overflow-y: auto;
+  max-height: 60vh;
 }
 
 .todoList_list .todoList_items .todoList_item {
@@ -528,4 +530,16 @@ nav ul a span {
   text-decoration: none;
 }
 
-/*# sourceMappingURL=all.css.map */
+.todoList_noTodo {
+  text-align: center;
+  padding-top: 44px;
+}
+
+.todoList_noTodo_title {
+  margin-bottom: 16px;
+}
+
+.todoList_noTodo_img {
+  max-width: 240px;
+  height: auto;
+}
