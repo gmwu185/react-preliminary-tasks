@@ -1,15 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { HashRouter } from 'react-router-dom';
-import './scss/index.scss';
-import App from './App';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
+
+import './scss/index.scss';
+
+import LoginPage from './components/LoginPage';
+import SignUp from './components/SignUp';
+import ToDoList from './components/todolist/index';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <HashRouter>
-      <App />
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/sign_up" element={<SignUp />} />
+        <Route path="/todolist" element={<ToDoList />} />
+      </Routes>
     </HashRouter>
   </React.StrictMode>
 );
