@@ -1,17 +1,16 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { useDatasContext } from '../../controllers/contexts';
 
-const LoginPage = () => {
+const Login = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const [loginData, setLoginData] = useState({
-    email: '',
-    password: '',
-  });
+
+  const { loginData, setLoginData } = useDatasContext();
   const onSubmit = (data) => alert(JSON.stringify(data));
 
   return (
@@ -76,4 +75,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default Login;

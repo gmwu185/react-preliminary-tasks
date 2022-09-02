@@ -1,14 +1,11 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { useDatasContext } from '../../controllers/contexts';
 
 const hrefLink = '#';
 
-const TodoItem = (props) => {
-  const {
-    todosData,
-    // selectType,
-    // setSelectType,
-  } = props;
+const TodoItem = () => {
+  const { todosData, selectType, setSelectType } = useDatasContext();
 
   return todosData.map((todo, i) => {
     return (

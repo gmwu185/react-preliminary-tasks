@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { useDatasContext } from '../../controllers/contexts';
 
 const SignUp = () => {
   const {
@@ -9,12 +10,8 @@ const SignUp = () => {
     watch,
     formState: { errors },
   } = useForm();
-  const [singUpData, setSingUpData] = useState({
-    email: '',
-    nickname: '',
-    password: '',
-    confirmPassword: '',
-  });
+
+  const { singUpData, setSingUpData } = useDatasContext();
   const onSubmit = (data) => alert(JSON.stringify(data));
 
   return (

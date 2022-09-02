@@ -1,14 +1,12 @@
+import { useDatasContext } from '../../controllers/contexts';
+
 import TodoTab from '../todolist/TodoTab';
 import TodoItem from '../todolist/TodoItem';
 
 const hrefLink = '#';
 
-const TodoItems = (props) => {
-  const {
-    todosData,
-    // selectType,
-    setSelectType,
-  } = props;
+const TodoItems = () => {
+  const { todosData, selectType, setSelectType } = useDatasContext();
 
   return (
     <div className="todoList_list">
