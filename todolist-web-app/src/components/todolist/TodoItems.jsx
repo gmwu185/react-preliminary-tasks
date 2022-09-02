@@ -1,19 +1,41 @@
-import { useDatasContext } from '../../controllers/contexts';
+import { useDatasContext, useAuth } from '../../controllers/contexts';
+import { api_deleteItem, api_todoList } from '../../controllers/todos';
 
 import TodoTab from '../todolist/TodoTab';
 import TodoItem from '../todolist/TodoItem';
 
-const hrefLink = '#';
-
 const TodoItems = () => {
-  const { todosData, selectType, setSelectType } = useDatasContext();
+  const { todosData, setTodosData, setSelectType } = useDatasContext();
+  const { token } = useAuth();
+  const hrefLink = '#';
+
+  const delAllTodoCompleted = (e) => {
+    todosData.forEach((el) => {
+      if (el.completed_at) {
+        const asyncDelAllTodoCompleted = async () => {
+          const delAllTodoCompletedRes = await api_deleteItem(token, el.id);
+          const delAllTodoCompletedResJson =
+            await delAllTodoCompletedRes.json();
+          if (delAllTodoCompletedRes.status === 200) {
+            alert(`${el.content} ${delAllTodoCompletedResJson.message}`);
+            const todoListRes = await api_todoList(token);
+            const todoListResJson = await todoListRes.json();
+            setTodosData(todoListResJson.todos);
+          } else {
+            alert(
+              `${el.content} 刪除發生錯誤，原因：${delAllTodoCompletedResJson.message}`
+            );
+          }
+        };
+        asyncDelAllTodoCompleted();
+      }
+    });
+    e.preventDefault();
+  };
 
   return (
     <div className="todoList_list">
-      <TodoTab
-        // selectType={selectType}
-        setSelectType={setSelectType}
-      />
+      <TodoTab setSelectType={setSelectType} />
       <div className="todoList_items">
         <ul className="todoList_item">
           <TodoItem todosData={todosData} />
@@ -23,7 +45,9 @@ const TodoItems = () => {
             {todosData.filter((todo) => todo.completed_at !== null).length}{' '}
             個已完成項目
           </p>
-          <a href={hrefLink}>清除已完成項目</a>
+          <a href={hrefLink} onClick={(e) => delAllTodoCompleted(e)}>
+            清除已完成項目
+          </a>
         </div>
       </div>
     </div>

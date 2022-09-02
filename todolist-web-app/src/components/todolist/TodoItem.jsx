@@ -36,6 +36,43 @@ const TodoItem = () => {
     e.preventDefault();
   };
 
+  const toggleTodo = (todo) => {
+    const checkTodo = todosData.find((item) => item.id === todo.id);
+    // console.log('checkTodo', checkTodo);
+
+    const asyncToggleTodo = async () => {
+      const toggleTodotRes = await api_changeCheckbox(token, checkTodo.id);
+      if (toggleTodotRes.status === 200) {
+        const toggleTodotResJson = await toggleTodotRes.json();
+        // console.log('toggleTodotResJson', toggleTodotResJson);
+
+        /* 寫法一：更新資料不上提 */
+        const newToggleTodos = await todosData.map((item) => {
+          if (item.id === toggleTodotResJson.id) {
+            return (item = toggleTodotResJson);
+          } else {
+            return item;
+          }
+        });
+        // console.log('newToggleTodos', newToggleTodos);
+        setTodosData(newToggleTodos);
+        /* /寫法一：更新資料不上提 */
+
+        /* 寫法二：更新資料會上提 */
+        // const todoListRes = await api_todoList(token);
+        // const todoListResJson = await todoListRes.json();
+        // console.log('todoListResJson.todos', todoListResJson.todos);
+        // setTodosData(todoListResJson.todos);
+        /* /寫法二：更新資料會上提 */
+
+        alert(`${toggleTodotResJson.content} 完成切換`);
+      } else {
+        alert(toggleTodotRes.message);
+      }
+    };
+    asyncToggleTodo();
+  };
+
   return todosData.map((todo) => {
     return (
       <li key={todo.id}>
@@ -44,45 +81,7 @@ const TodoItem = () => {
             className="todoList_input"
             type="checkbox"
             checked={todo.completed_at !== null}
-            onChange={() => {
-              const checkTodo = todosData.find((item) => item.id === todo.id);
-              // console.log('checkTodo', checkTodo);
-
-              const asyncToggleTodo = async () => {
-                const toggleTodotRes = await api_changeCheckbox(
-                  token,
-                  checkTodo.id
-                );
-                if (toggleTodotRes.status === 200) {
-                  const toggleTodotResJson = await toggleTodotRes.json();
-                  // console.log('toggleTodotResJson', toggleTodotResJson);
-
-                  /* 寫法一：更新資料不上提 */
-                  const newToggleTodos = await todosData.map((item) => {
-                    if (item.id === toggleTodotResJson.id) {
-                      return (item = toggleTodotResJson);
-                    } else {
-                      return item;
-                    }
-                  });
-                  // console.log('newToggleTodos', newToggleTodos);
-                  setTodosData(newToggleTodos);
-                  /* /寫法一：更新資料不上提 */
-
-                  /* 寫法二：更新資料會上提 */
-                  // const todoListRes = await api_todoList(token);
-                  // const todoListResJson = await todoListRes.json();
-                  // console.log('todoListResJson.todos', todoListResJson.todos);
-                  // setTodosData(todoListResJson.todos);
-                  /* /寫法二：更新資料會上提 */
-
-                  alert(`${toggleTodotResJson.content} 完成切換`);
-                } else {
-                  alert(toggleTodotRes.message);
-                }
-              };
-              asyncToggleTodo();
-            }}
+            onChange={() => toggleTodo(todo)}
           />
           <span>{todo.content}</span>
         </label>
