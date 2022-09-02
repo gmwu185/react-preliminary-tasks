@@ -1,8 +1,17 @@
 import { Link } from 'react-router-dom';
-import { useDatasContext } from '../../controllers/contexts';
+import { useDatasContext, useAuth } from '../../controllers/contexts';
 
 const TodoNav = () => {
+  const { setToken } = useAuth();
   const { nickname } = useDatasContext();
+
+  const logout = (e) => {
+    localStorage.setItem('token', null);
+    localStorage.setItem('nickname', '');
+    setToken('');
+    alert('已完成登出動作，將導至登入頁。');
+    e.preventDefault();
+  };
 
   return (
     <nav>
@@ -16,7 +25,9 @@ const TodoNav = () => {
           </Link>
         </li>
         <li>
-          <a href="#loginPage">登出</a>
+          <a href="#loginPage" onClick={(e) => logout(e)}>
+            登出
+          </a>
         </li>
       </ul>
     </nav>
