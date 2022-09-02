@@ -1,14 +1,15 @@
 import { createContext, useContext } from 'react';
-import { Navigate, Outlet } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
+import ToDoList from '../components/todolist/index';
 
-export const AuthContext = createContext(null);
+export const AuthContext = createContext(localStorage.getItem('token') || null);
 export const useAuth = () => useContext(AuthContext);
 export const ProtectedRoute = () => {
   const { token } = useAuth();
   if (!token) {
     return <Navigate to="/" replace />;
   }
-  return <Outlet />;
+  return <ToDoList />;
 };
 
 export const DatasContext = createContext({});

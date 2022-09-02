@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { useDatasContext } from '../../controllers/contexts';
+import { useDatasContext, useAuth } from '../../controllers/contexts';
+import { api_login } from '../../controllers/user';
 
 const Login = () => {
   const {
@@ -10,8 +10,28 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-  const { loginData, setLoginData } = useDatasContext();
-  const onSubmit = (data) => alert(JSON.stringify(data));
+  const { setToken } = useAuth();
+  const { loginData, setNickname } = useDatasContext();
+  const navigate = useNavigate();
+
+  const onSubmit = async (data) => {
+    const loginRes = await api_login(data);
+    const loginResJson = await loginRes.json();
+    console.log('login loginResJson', loginResJson);
+    if (loginRes.status === 200) {
+      // alert(loginResJson.message);
+      console.log(loginResJson.message);
+      localStorage.setItem('token', loginRes.headers.get('authorization'));
+      setToken(
+        localStorage.getItem('token') || loginRes.headers.get('authorization')
+      );
+      localStorage.setItem('nickname', loginResJson.nickname);
+      setNickname(localStorage.getItem('nickname') || loginResJson.nickname);
+      navigate('/todolist');
+    } else {
+      alert(loginResJson.error);
+    }
+  };
 
   return (
     <form className="formControls" onSubmit={handleSubmit(onSubmit)}>
@@ -32,6 +52,7 @@ const Login = () => {
             message: '此欄位必填',
           },
           pattern: {
+            // eslint-disable-next-line
             value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
             message: '不符合 Email 格式',
           },
@@ -62,12 +83,7 @@ const Login = () => {
       {errors.password && (
         <span>{errors.password && errors.password?.message}</span>
       )}
-      <input
-        className="formControls_btnSubmit"
-        type="button"
-        type="submit"
-        value="登入"
-      />
+      <input className="formControls_btnSubmit" type="submit" value="登入" />
       <Link className="formControls_btnLink" to="/sign_up">
         註冊帳號
       </Link>

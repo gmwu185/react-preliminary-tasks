@@ -1,6 +1,11 @@
+import { useEffect } from 'react';
+import { useDatasContext } from '../../controllers/contexts';
+
 const hrefLink = '#';
 
 const TodoNav = () => {
+  const { nickname, setNickname } = useDatasContext();
+
   return (
     <nav>
       <h1>
@@ -9,7 +14,7 @@ const TodoNav = () => {
       <ul>
         <li className="todo_sm">
           <a href={hrefLink}>
-            <span>王小明的代辦</span>
+            <span>{nickname} 的代辦</span>
           </a>
         </li>
         <li>

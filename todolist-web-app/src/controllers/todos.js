@@ -2,6 +2,7 @@ const API_URL = 'https://todoo.5xcamp.us/todos';
 
 export const api_todoList = async (token) => {
   return await fetch(API_URL, {
+    method: 'GET',
     headers: {
       Authorization: token,
     },
