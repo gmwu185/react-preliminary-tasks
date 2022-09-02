@@ -1,6 +1,19 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 
 const LoginPage = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const [loginData, setLoginData] = useState({
+    email: '',
+    password: '',
+  });
+  const onSubmit = (data) => alert(JSON.stringify(data));
+
   return (
     <div id="loginPage" className="bg-yellow">
       <div className="conatiner loginPage vhContainer">
@@ -11,7 +24,7 @@ const LoginPage = () => {
           <img className="d-m-n" src="assets/img/tj3Bdk.png" alt="workImg" />
         </div>
         <div>
-          <form className="formControls" action="index.html">
+          <form className="formControls" onSubmit={handleSubmit(onSubmit)}>
             <h2 className="formControls_txt">最實用的線上代辦事項服務</h2>
             <label className="formControls_label" htmlFor="email">
               Email
@@ -22,9 +35,21 @@ const LoginPage = () => {
               id="email"
               name="email"
               placeholder="請輸入 email"
-              required
+              defaultValue={loginData.email}
+              {...register('email', {
+                required: {
+                  value: true,
+                  message: '此欄位必填',
+                },
+                pattern: {
+                  value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
+                  message: '不符合 Email 格式',
+                },
+              })}
             />
-            <span>此欄位不可留空</span>
+            {errors.email && (
+              <span>{errors.email && errors.email?.message}</span>
+            )}
             <label className="formControls_label" htmlFor="pwd">
               密碼
             </label>
@@ -34,17 +59,30 @@ const LoginPage = () => {
               name="pwd"
               id="pwd"
               placeholder="請輸入密碼"
-              required
+              defaultValue={loginData.password}
+              {...register('password', {
+                required: {
+                  value: true,
+                  message: '此欄位必填',
+                },
+                minLength:{
+                  value:6,
+                  message:"密碼長度至少 6 位數"
+                }
+              })}
             />
+            {errors.password && (
+              <span>{errors.password && errors.password?.message}</span>
+            )}
             <input
               className="formControls_btnSubmit"
               type="button"
-              // onclick="javascript:location.href='#todoListPage'"
+              type="submit"
               value="登入"
             />
-            <a className="formControls_btnLink" href="#signUpPage">
+            <Link className="formControls_btnLink" to="/sign_up">
               註冊帳號
-            </a>
+            </Link>
           </form>
         </div>
       </div>
