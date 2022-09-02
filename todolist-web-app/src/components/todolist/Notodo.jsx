@@ -4,7 +4,7 @@ const Notodo = () => {
       <p className="todoList_noTodo_title">目前尚無待辦事項</p>
       <img
         className="todoList_noTodo_img"
-        src="assets/img/on-todo-img.png"
+        src={`${process.env.PUBLIC_URL}/assets/img/on-todo-img.png`}
         alt=""
       />
     </div>

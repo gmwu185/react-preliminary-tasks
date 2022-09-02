@@ -31,5 +31,7 @@
 
 ## week-4-task (React & API 整合證書任務)
 
+### [GitHub Pages ](https://gmwu185.github.io/react-preliminary-tasks/todolist-web-app/build/#/)
+
 - 素材資料：
   - [fontawesome 5.15.4 圖示文件](https://fontawesome.com/v5/search?o=r&m=free)

@@ -1,10 +1,8 @@
-import { useState } from 'react';
 import { useDatasContext } from '../../controllers/contexts';
 
-const hrefLink = '#';
-
 const TodoTab = () => {
-  const { selectType, setSelectType, tabStatus, setTabStatus } = useDatasContext();
+  const { setSelectType, tabStatus, setTabStatus } = useDatasContext();
+  const hrefLink = '#';
 
   return (
     <ul className="todoList_tab">

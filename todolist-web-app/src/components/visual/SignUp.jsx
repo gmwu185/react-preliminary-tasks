@@ -54,6 +54,7 @@ const SignUp = () => {
             message: '此欄位必填',
           },
           pattern: {
+            // eslint-disable-next-line
             value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
             message: '不符合 Email 格式',
           },
