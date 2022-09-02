@@ -5,8 +5,10 @@ import reportWebVitals from './reportWebVitals';
 
 import './scss/index.scss';
 
-import LoginPage from './components/LoginPage';
-import SignUp from './components/SignUp';
+import VisualLayout from './components/visual/VisualLayout';
+import Login from './components/visual/Login';
+import SignUp from './components/visual/SignUp';
+import NotFound from './components/visual/NotFound';
 import ToDoList from './components/todolist/index';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -14,8 +16,11 @@ root.render(
   <React.StrictMode>
     <HashRouter>
       <Routes>
-        <Route path="/" element={<LoginPage />} />
-        <Route path="/sign_up" element={<SignUp />} />
+        <Route path="/" element={<VisualLayout />}>
+          <Route index element={<Login />} />
+          <Route path="sign_up" element={<SignUp />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
         <Route path="/todolist" element={<ToDoList />} />
       </Routes>
     </HashRouter>
