@@ -1,19 +1,14 @@
 ## week-1-task (台幣兌換外幣)
-======
 
 - [LV-1](https://gmwu185.github.io/react-preliminary-tasks/exchange-currency/LV-1.html)、[LV-2](https://gmwu185.github.io/react-preliminary-tasks/exchange-currency/LV-2.html)、[LV-3](https://gmwu185.github.io/react-preliminary-tasks/exchange-currency/LV-3.html)
 - [成品 (LV-3)](https://gmwu185.github.io/react-preliminary-tasks/exchange-currency/LV-3.html)
 
-
 ## week-2-task (todolist--local)
-======
 - [Codepen 版型](https://codepen.io/liao/pen/MWVBGxq?editors=1010)
 - [成品 (元件等級 LV 3、功能等級 LV 3)](https://gmwu185.github.io/react-preliminary-tasks/todolist--local)
 
 
-
 ## week-3-task (React Router)
-======
 ### [LV-1 (creat react app 部署 GitHub)](https://gmwu185.github.io/react-preliminary-tasks/react-router-test/build/#/)
 拆分 React 元件進行分頁規劃，並將 API 透過 AJAX 介接資料，引用資對應分頁中的父與子層元件。
 
@@ -32,3 +27,11 @@
   - [首頁-4](https://unsplash.com/photos/eup1RDk1I5w)
   - [關於基隆](https://unsplash.com/photos/2grhu3s_VXU)
   - [旅遊基隆](https://greatkeelung.klcg.gov.tw/tw/Index)
+
+
+## week-4-task (React & API 整合證書任務)
+
+### [GitHub Pages ](https://gmwu185.github.io/react-preliminary-tasks/todolist-web-app/build/#/)
+
+- 素材資料：
+  - [fontawesome 5.15.4 圖示文件](https://fontawesome.com/v5/search?o=r&m=free)
