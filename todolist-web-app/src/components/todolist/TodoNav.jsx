@@ -1,21 +1,19 @@
-import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useDatasContext } from '../../controllers/contexts';
 
-const hrefLink = '#';
-
 const TodoNav = () => {
-  const { nickname, setNickname } = useDatasContext();
+  const { nickname } = useDatasContext();
 
   return (
     <nav>
       <h1>
-        <a href={hrefLink}>ONLINE TODO LIST</a>
+        <Link to="todolist">ONLINE TODO LIST</Link>
       </h1>
       <ul>
         <li className="todo_sm">
-          <a href={hrefLink}>
+          <Link to="todolist">
             <span>{nickname} 的代辦</span>
-          </a>
+          </Link>
         </li>
         <li>
           <a href="#loginPage">登出</a>

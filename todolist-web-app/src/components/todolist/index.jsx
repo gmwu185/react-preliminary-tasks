@@ -19,6 +19,7 @@ const ToDoListPage = () => {
       setTodosData(resJson.todos);
     };
     todoList();
+    // eslint-disable-next-line
   }, []);
 
   return (
