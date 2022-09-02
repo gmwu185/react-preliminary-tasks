@@ -19,7 +19,10 @@ const TodoItems = () => {
           <TodoItem todosData={todosData} />
         </ul>
         <div className="todoList_statistics">
-          <p> 5 個已完成項目</p>
+          <p>
+            {todosData.filter((todo) => todo.completed_at !== null).length}{' '}
+            個已完成項目
+          </p>
           <a href={hrefLink}>清除已完成項目</a>
         </div>
       </div>
