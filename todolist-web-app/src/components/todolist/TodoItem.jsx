@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
@@ -10,13 +10,23 @@ import {
 } from '../../controllers/todos';
 
 const TodoItem = () => {
-  const { todosData, setTodosData } = useDatasContext();
+  const { todosData, setTodosData, selectType } = useDatasContext();
   const { token } = useAuth();
+  const [todosStatusData, setTodosStatusData] = useState([]);
+  useEffect(() => {
+    if (selectType === 'unfinish') {
+      setTodosStatusData(
+        todosData.filter((todo) => todo.completed_at === null)
+      );
+    } else if (selectType === 'finish') {
+      setTodosStatusData(
+        todosData.filter((todo) => todo.completed_at !== null)
+      );
+    } else {
+      setTodosStatusData(todosData);
+    }
+  }, [selectType, todosData]);
   const hrefLink = '#';
-
-  // useEffect(() => {
-  //   console.log('useEffect todosData', todosData);
-  // }, [todosData]);
 
   const delTodo = ({ e, todo }) => {
     const { id, content } = todo;
@@ -35,7 +45,6 @@ const TodoItem = () => {
     asyncDelTodo();
     e.preventDefault();
   };
-
   const toggleTodo = (todo) => {
     const checkTodo = todosData.find((item) => item.id === todo.id);
     // console.log('checkTodo', checkTodo);
@@ -73,7 +82,7 @@ const TodoItem = () => {
     asyncToggleTodo();
   };
 
-  return todosData.map((todo) => {
+  return todosStatusData.map((todo) => {
     return (
       <li key={todo.id}>
         <label className="todoList_label">

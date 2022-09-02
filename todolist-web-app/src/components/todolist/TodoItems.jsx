@@ -5,7 +5,7 @@ import TodoTab from '../todolist/TodoTab';
 import TodoItem from '../todolist/TodoItem';
 
 const TodoItems = () => {
-  const { todosData, setTodosData, setSelectType } = useDatasContext();
+  const { todosData, setTodosData } = useDatasContext();
   const { token } = useAuth();
   const hrefLink = '#';
 
@@ -35,10 +35,10 @@ const TodoItems = () => {
 
   return (
     <div className="todoList_list">
-      <TodoTab setSelectType={setSelectType} />
+      <TodoTab />
       <div className="todoList_items">
         <ul className="todoList_item">
-          <TodoItem todosData={todosData} />
+          <TodoItem />
         </ul>
         <div className="todoList_statistics">
           <p>
