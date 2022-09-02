@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { useDatasContext } from '../../controllers/contexts';
+import { useDatasContext, useAuth } from '../../controllers/contexts';
+import { api_register } from '../../controllers/user';
 
 const SignUp = () => {
   const {
@@ -11,8 +11,29 @@ const SignUp = () => {
     formState: { errors },
   } = useForm();
 
-  const { singUpData, setSingUpData } = useDatasContext();
-  const onSubmit = (data) => alert(JSON.stringify(data));
+  const { setToken } = useAuth();
+  const { singUpData, setNickname } = useDatasContext();
+  const navigate = useNavigate();
+
+  const onSubmit = async (data) => {
+    const registerRes = await api_register(data);
+    console.log('registerRes', registerRes);
+    const registerResJson = await registerRes.json();
+    console.log('registerResJson', registerResJson);
+    if (registerRes.status === 201) {
+      console.log(registerResJson.message);
+      localStorage.setItem('token', registerRes.headers.get('authorization'));
+      setToken(
+        localStorage.getItem('token') ||
+          registerRes.headers.get('authorization')
+      );
+      localStorage.setItem('nickname', registerResJson.nickname);
+      setNickname(localStorage.getItem('nickname') || registerResJson.nickname);
+      navigate('/todolist');
+    } else {
+      alert(`${registerResJson.message} ${registerResJson.error.join()}`);
+    }
+  };
 
   return (
     <form className="formControls" onSubmit={handleSubmit(onSubmit)}>
