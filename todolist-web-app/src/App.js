@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import Notiflix from 'notiflix';
 
 import {
   AuthContext,
@@ -12,10 +13,23 @@ import SignUp from './components/visual/SignUp';
 import NotFound from './components/visual/NotFound';
 import ToDoList from './components/todolist/index';
 
+const NotiflixDangerColor = '#ff5549';
+Notiflix.Loading.init({
+  customSvgUrl: `${process.env.PUBLIC_URL}/assets/img/logo-primary.svg`,
+  svgSize: '100px',
+});
+Notiflix.Confirm.init({
+  titleColor: NotiflixDangerColor,
+  okButtonBackground: NotiflixDangerColor,
+  borderRadius: '8px',
+})
+
 function App() {
   const [token, setToken] = useState(localStorage.getItem('token') || null);
   const [selectType, setSelectType] = useState('all');
-  const [nickname, setNickname] = useState(localStorage.getItem('nickname') || '');
+  const [nickname, setNickname] = useState(
+    localStorage.getItem('nickname') || ''
+  );
   const [tabStatus, setTabStatus] = useState([
     { type: 'all', text: '全部', active: true },
     { type: 'unfinish', text: '待完成', active: false },
@@ -39,6 +53,13 @@ function App() {
     password: '',
     confirmPassword: '',
   });
+
+  useEffect(() => {
+    Notiflix.Loading.custom('讀取中 ...');
+    setTimeout(() => {
+      Notiflix.Loading.remove();
+    }, 2000);
+  }, []);
 
   return (
     <>

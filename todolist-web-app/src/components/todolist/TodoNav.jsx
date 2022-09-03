@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom';
+import Notiflix from 'notiflix';
+
 import { useDatasContext, useAuth } from '../../controllers/contexts';
 
 const TodoNav = () => {
@@ -6,10 +8,24 @@ const TodoNav = () => {
   const { nickname } = useDatasContext();
 
   const logout = (e) => {
-    localStorage.setItem('token', null);
-    localStorage.setItem('nickname', '');
-    setToken('');
-    alert('已完成登出動作，將導至登入頁。');
+    Notiflix.Confirm.show(
+      '執行登出',
+      '請確定是否需要登出',
+      '確定',
+      '取消',
+      () => {
+        Notiflix.Notify.success('已完成登出動作，將導至登入頁');
+        setTimeout(() => {
+          localStorage.setItem('token', null);
+          localStorage.setItem('nickname', '');
+          setToken('');
+        }, 2000);
+      },
+      () => {
+        Notiflix.Notify.failure('取消登出');
+      }
+    );
+
     e.preventDefault();
   };
 

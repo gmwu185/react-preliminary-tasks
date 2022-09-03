@@ -1,6 +1,15 @@
+import { useEffect } from 'react';
 import { Outlet, Link } from 'react-router-dom';
+import Notiflix from 'notiflix';
 
 const VisualLayout = () => {
+  useEffect(() => {
+    Notiflix.Loading.custom('讀取中 ...');
+    setTimeout(() => {
+      Notiflix.Loading.remove();
+    }, 1000);
+  }, []);
+
   return (
     <div className="bg-yellow">
       <div className="conatiner loginPage vhContainer">

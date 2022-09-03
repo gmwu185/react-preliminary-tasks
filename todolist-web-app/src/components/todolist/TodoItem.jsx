@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import Notiflix from 'notiflix';
 
 import { useDatasContext, useAuth } from '../../controllers/contexts';
 import {
@@ -37,9 +38,9 @@ const TodoItem = () => {
         const todoListRes = await api_todoList(token);
         const todoListResJson = await todoListRes.json();
         setTodosData(todoListResJson.todos);
-        alert(`${delTodoResJson.message} ${content}`);
+        Notiflix.Notify.success(`${delTodoResJson.message} ${content}`);
       } else {
-        alert(delTodoResJson.message);
+        Notiflix.Notify.failure(delTodoResJson.message);
       }
     };
     asyncDelTodo();
@@ -48,7 +49,6 @@ const TodoItem = () => {
   const toggleTodo = (todo) => {
     const checkTodo = todosData.find((item) => item.id === todo.id);
     // console.log('checkTodo', checkTodo);
-
     const asyncToggleTodo = async () => {
       const toggleTodotRes = await api_changeCheckbox(token, checkTodo.id);
       if (toggleTodotRes.status === 200) {
@@ -74,9 +74,13 @@ const TodoItem = () => {
         // setTodosData(todoListResJson.todos);
         /* /寫法二：更新資料會上提 */
 
-        alert(`${toggleTodotResJson.content} 完成切換`);
+        Notiflix.Notify.success(
+          `${toggleTodotResJson.content} 切換為${
+            checkTodo.completed_at !== null ? '待完成' : '已完成'
+          }`
+        );
       } else {
-        alert(toggleTodotRes.message);
+        Notiflix.Notify.failure(toggleTodotRes.message);
       }
     };
     asyncToggleTodo();
