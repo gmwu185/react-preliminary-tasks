@@ -1,5 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import Notiflix from 'notiflix';
+
 import { useDatasContext, useAuth } from '../../controllers/contexts';
 import { api_login } from '../../controllers/user';
 
@@ -17,10 +19,8 @@ const Login = () => {
   const onSubmit = async (data) => {
     const loginRes = await api_login(data);
     const loginResJson = await loginRes.json();
-    console.log('login loginResJson', loginResJson);
     if (loginRes.status === 200) {
-      // alert(loginResJson.message);
-      console.log(loginResJson.message);
+      Notiflix.Notify.success(loginResJson.message);
       localStorage.setItem('token', loginRes.headers.get('authorization'));
       setToken(
         localStorage.getItem('token') || loginRes.headers.get('authorization')
@@ -29,7 +29,7 @@ const Login = () => {
       setNickname(localStorage.getItem('nickname') || loginResJson.nickname);
       navigate('/todolist');
     } else {
-      alert(loginResJson.error);
+      Notiflix.Report.failure('發生錯誤', loginResJson.error, '確定');
     }
   };
 

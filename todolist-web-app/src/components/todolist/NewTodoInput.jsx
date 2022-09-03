@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import Notiflix from 'notiflix';
 
 import { useDatasContext, useAuth } from '../../controllers/contexts';
 import { api_addTodo, api_todoList } from '../../controllers/todos';
@@ -13,7 +14,7 @@ const NewTodoInput = () => {
 
   const addTodo = (e) => {
     if (!newTodo) {
-      alert('請正確輸入文字內容！');
+      Notiflix.Notify.failure('請正確輸入文字內容！');
     } else {
       const asyncAddTodo = async () => {
         const addTodoRes = await api_addTodo(token, newTodo);
@@ -22,9 +23,9 @@ const NewTodoInput = () => {
           const todoListRes = await api_todoList(token);
           const todoListResJson = await todoListRes.json();
           setTodosData(todoListResJson.todos);
-          alert('成功新增 TODO 資料');
+          Notiflix.Notify.success('成功新增 TODO 資料！');
         } else {
-          alert(addTodoResJson.message);
+          Notiflix.Notify.failure(addTodoResJson.message);
         }
       };
       asyncAddTodo();

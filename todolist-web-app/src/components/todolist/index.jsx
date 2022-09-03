@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import Notiflix from 'notiflix';
 
 import { useDatasContext, useAuth } from '../../controllers/contexts';
 import { api_todoList } from '../../controllers/todos';
@@ -13,6 +14,10 @@ const ToDoListPage = () => {
   const { setSelectType, todosData, setTodosData } = useDatasContext();
 
   useEffect(() => {
+    Notiflix.Loading.custom('讀取中 ...');
+    setTimeout(() => {
+      Notiflix.Loading.remove();
+    }, 1000);
     const todoList = async () => {
       const res = await api_todoList(token || localStorage.getItem('token'));
       const resJson = await res.json();

@@ -1,5 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import Notiflix from 'notiflix';
+
 import { useDatasContext, useAuth } from '../../controllers/contexts';
 import { api_register } from '../../controllers/user';
 
@@ -17,11 +19,9 @@ const SignUp = () => {
 
   const onSubmit = async (data) => {
     const registerRes = await api_register(data);
-    console.log('registerRes', registerRes);
     const registerResJson = await registerRes.json();
-    console.log('registerResJson', registerResJson);
     if (registerRes.status === 201) {
-      console.log(registerResJson.message);
+      Notiflix.Notify.success(registerResJson.message);
       localStorage.setItem('token', registerRes.headers.get('authorization'));
       setToken(
         localStorage.getItem('token') ||
@@ -31,7 +31,11 @@ const SignUp = () => {
       setNickname(localStorage.getItem('nickname') || registerResJson.nickname);
       navigate('/todolist');
     } else {
-      alert(`${registerResJson.message} ${registerResJson.error.join()}`);
+      Notiflix.Report.failure(
+        registerResJson.message,
+        registerResJson.error.join(),
+        '了解'
+      );
     }
   };
 
