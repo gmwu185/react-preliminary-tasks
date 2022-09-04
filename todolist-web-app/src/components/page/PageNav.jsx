@@ -15,6 +15,7 @@ const PageNav = () => {
       '取消',
       () => {
         Notiflix.Notify.success('已完成登出動作，將導至登入頁');
+        Notiflix.Loading.custom('讀取中 ...');
         setTimeout(() => {
           localStorage.setItem('token', null);
           localStorage.setItem('nickname', '');
