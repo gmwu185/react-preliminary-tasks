@@ -1,6 +1,14 @@
+import { useEffect } from 'react';
+
+import { SwalLoader } from '../vendorModule/Swal';
+
 import BreadcrumbHeader from './BreadcrumbHeader';
 
 function About() {
+  useEffect(() => {
+    SwalLoader();
+  }, []);
+
   return (
     <>
       <BreadcrumbHeader

@@ -1,3 +1,5 @@
+import { msgSwal } from '../vendorModule/Swal';
+
 const SelecteArea = (props) => {
   const { tourDatas, areaSelected, setAreaSelected, pageCalce, setPageCalce } = props;
   const reduceTourDatas = tourDatas.reduce((accumulator, currentValue) => {
@@ -31,7 +33,7 @@ const SelecteArea = (props) => {
             data: reduceTourDatas[areaSelected.str],
           });
     } else {
-      alert('請選行政區');
+      msgSwal('請選行政區');
     }
   };
 

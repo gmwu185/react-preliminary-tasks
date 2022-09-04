@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useOutletContext, useParams, useNavigate } from 'react-router-dom';
+
+import { SwalLoader, msgSwal } from '../vendorModule/Swal';
+
 import BreadcrumbHeader from './BreadcrumbHeader';
 
 function TourDetail() {
@@ -9,12 +12,14 @@ function TourDetail() {
   const [tourData, setTourData] = useState({});
 
   useEffect(() => {
+    SwalLoader();
+    
     const disposeTourApiData = (apiData) => {
       const tourFillterData = apiData.filter((item) => {
         return item.id === para_id;
       });
       if (tourFillterData.length === 0) {
-        alert('無此分頁 ID，將重新導向列表頁！');
+        msgSwal('無此分頁 ID，將重新導向列表頁！');
         navigate('/tour');
       }
       setTourData(tourFillterData[0]);
