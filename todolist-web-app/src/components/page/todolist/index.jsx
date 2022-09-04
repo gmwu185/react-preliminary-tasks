@@ -1,10 +1,9 @@
 import { useEffect } from 'react';
 import Notiflix from 'notiflix';
 
-import { useDatasContext, useAuth } from '../../controllers/contexts';
-import { api_todoList } from '../../controllers/todos';
+import { useDatasContext, useAuth } from '../../../controllers/contexts';
+import { api_todoList } from '../../../controllers/todos';
 
-import TodoNav from '../todolist/TodoNav';
 import NewTodoInput from '../todolist/NewTodoInput';
 import TodoItems from '../todolist/TodoItems';
 import Notodo from '../todolist/Notodo';
@@ -28,22 +27,13 @@ const ToDoListPage = () => {
   }, []);
 
   return (
-    <div id="todoListPage" className="bg-half">
-      <TodoNav />
-      <div className="conatiner todoListPage vhContainer">
-        <div className="todoList_Content">
-          <NewTodoInput />
-          {todosData.length > 0 ? (
-            <TodoItems
-              todosData={todosData}
-              // selectType={selectType}
-              setSelectType={setSelectType}
-            />
-          ) : (
-            <Notodo />
-          )}
-        </div>
-      </div>
+    <div className="todoList_Content">
+      <NewTodoInput />
+      {todosData.length > 0 ? (
+        <TodoItems todosData={todosData} setSelectType={setSelectType} />
+      ) : (
+        <Notodo />
+      )}
     </div>
   );
 };

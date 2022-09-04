@@ -3,8 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import Notiflix from 'notiflix';
 
-import { useDatasContext, useAuth } from '../../controllers/contexts';
-import { api_addTodo, api_todoList } from '../../controllers/todos';
+import { useDatasContext, useAuth } from '../../../controllers/contexts';
+import { api_addTodo, api_todoList } from '../../../controllers/todos';
 
 const NewTodoInput = () => {
   const hrefLink = '#';

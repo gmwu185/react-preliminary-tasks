@@ -3,12 +3,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import Notiflix from 'notiflix';
 
-import { useDatasContext, useAuth } from '../../controllers/contexts';
+import { useDatasContext, useAuth } from '../../../controllers/contexts';
 import {
   api_deleteItem,
   api_todoList,
   api_changeCheckbox,
-} from '../../controllers/todos';
+} from '../../../controllers/todos';
 
 const TodoItem = () => {
   const { todosData, setTodosData, selectType } = useDatasContext();
