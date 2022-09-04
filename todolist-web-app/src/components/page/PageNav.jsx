@@ -3,7 +3,7 @@ import Notiflix from 'notiflix';
 
 import { useDatasContext, useAuth } from '../../controllers/contexts';
 
-const TodoNav = () => {
+const PageNav = () => {
   const { setToken } = useAuth();
   const { nickname } = useDatasContext();
 
@@ -50,4 +50,4 @@ const TodoNav = () => {
   );
 };
 
-export default TodoNav;
+export default PageNav;

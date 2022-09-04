@@ -11,7 +11,8 @@ import VisualLayout from './components/visual/VisualLayout';
 import Login from './components/visual/Login';
 import SignUp from './components/visual/SignUp';
 import NotFound from './components/visual/NotFound';
-import ToDoList from './components/todolist/index';
+import PageLayout from './components/page/PageLayout';
+import ToDoList from './components/page/todolist/index';
 
 const NotiflixDangerColor = '#ff5549';
 Notiflix.Loading.init({
@@ -22,7 +23,7 @@ Notiflix.Confirm.init({
   titleColor: NotiflixDangerColor,
   okButtonBackground: NotiflixDangerColor,
   borderRadius: '8px',
-})
+});
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem('token') || null);
@@ -35,14 +36,7 @@ function App() {
     { type: 'unfinish', text: '待完成', active: false },
     { type: 'finish', text: '已完成', active: false },
   ]);
-  const [todosData, setTodosData] = useState([
-    // { id: 1, content: '把冰箱發霉的檸檬拿去丟', finish: false },
-    // { id: 2, content: '打電話叫媽媽匯款給我', finish: true },
-    // { id: 3, content: '整理電腦資料夾', finish: false },
-    // { id: 4, content: '繳電費水費瓦斯費', finish: false },
-    // { id: 5, content: '約vicky禮拜三泡溫泉', finish: false },
-    // { id: 6, content: '約ada禮拜四吃晚餐', finish: false },
-  ]);
+  const [todosData, setTodosData] = useState([]);
   const [loginData, setLoginData] = useState({
     email: '',
     password: '',
@@ -88,7 +82,9 @@ function App() {
                 <Route path="*" element={<NotFound />} />
               </Route>
               <Route element={<ProtectedRoute />}>
-                <Route path="/todolist" element={<ToDoList />} />
+                <Route element={<PageLayout />}>
+                  <Route path="/todolist" element={<ToDoList />} />
+                </Route>
               </Route>
             </Route>
           </Routes>

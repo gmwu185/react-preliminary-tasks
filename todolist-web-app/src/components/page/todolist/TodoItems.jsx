@@ -1,7 +1,7 @@
 import Notiflix from 'notiflix';
 
-import { useDatasContext, useAuth } from '../../controllers/contexts';
-import { api_deleteItem, api_todoList } from '../../controllers/todos';
+import { useDatasContext, useAuth } from '../../../controllers/contexts';
+import { api_deleteItem, api_todoList } from '../../../controllers/todos';
 
 import TodoTab from '../todolist/TodoTab';
 import TodoItem from '../todolist/TodoItem';
