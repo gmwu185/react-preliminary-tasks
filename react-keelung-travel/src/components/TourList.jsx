@@ -34,6 +34,7 @@ function TourList() {
   useEffect(() => {
     setAreaSelected((status) => ({ ...status, data: tourDatas }));
     setData(areaSelected.data);
+    // eslint-disable-next-line
   }, [tourDatas]);
 
   useEffect(() => {
@@ -45,6 +46,7 @@ function TourList() {
           : pageCalce.current,
     });
     setData(areaSelected.data);
+    // eslint-disable-next-line
   }, [pageCalce.current, pageCalce.start, pageCalce.end, areaSelected.data]);
 
   return (
