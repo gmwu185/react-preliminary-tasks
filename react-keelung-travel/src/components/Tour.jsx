@@ -18,10 +18,10 @@ function Tour() {
           setRourDatas(result.attractions);
           Swal.fire({
             position: 'top-end',
-            icon: 'success',
+            icon: 'info',
             html: `<small>完整旅遊景點資料已完全載入頁面，可透過選擇地區過濾操作！</small>`,
-            showConfirmButton: false,
-            timer: 2000,
+            // showConfirmButton: false,
+            timer: 3000,
           });
         })
         .catch((err) => {
