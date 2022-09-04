@@ -39,6 +39,9 @@ $secondary: #040e26;
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#207ce5', endColorstr='#13d42a', GradientType=1 );
 }
 
+// @import '@sweetalert2/theme-bootstrap-4/bootstrap-4.scss'; // node-sass 出錯
+@import '@sweetalert2/themes/bootstrap-4/bootstrap-4.css';
+
 html {
 	// overflow-x: hidden;
 }

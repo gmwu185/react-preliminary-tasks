@@ -1,7 +1,14 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+
+import { SwalLoader } from '../vendorModule/Swal';
+
 import ImageHeader from './ImageHeader';
 
 function Home() {
+  useEffect(() => {
+    SwalLoader();
+  }, []);
   return (
     <>
       <ImageHeader bgImgPath="https://tour.klcg.gov.tw/media/klcgtour/attractions/5821017/55f1314c-bc36-4691-aff6-abe5408e424d.jpg" />
@@ -27,7 +34,9 @@ function Home() {
                 <div className="col-md-12 col-lg-6 d-flex align-self-stretch">
                   <div
                     className="services services-1 color-1 d-block img"
-                    style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/images/services-1.jpg)` }}
+                    style={{
+                      backgroundImage: `url(${process.env.PUBLIC_URL}/images/services-1.jpg)`,
+                    }}
                   >
                     <div className="icon d-flex align-items-center justify-content-center">
                       <span className="flaticon-paragliding"></span>
@@ -46,7 +55,9 @@ function Home() {
                 <div className="col-md-12 col-lg-6 d-flex align-self-stretch">
                   <div
                     className="services services-1 color-2 d-block img"
-                    style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/images/services-2.jpg)` }}
+                    style={{
+                      backgroundImage: `url(${process.env.PUBLIC_URL}/images/services-2.jpg)`,
+                    }}
                   >
                     <div className="icon d-flex align-items-center justify-content-center">
                       <span className="flaticon-route"></span>
@@ -62,7 +73,9 @@ function Home() {
                 <div className="col-md-12 col-lg-6 d-flex align-self-stretch">
                   <div
                     className="services services-1 color-3 d-block img"
-                    style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/images/services-3.jpg)` }}
+                    style={{
+                      backgroundImage: `url(${process.env.PUBLIC_URL}/images/services-3.jpg)`,
+                    }}
                   >
                     <div className="icon d-flex align-items-center justify-content-center">
                       <span className="flaticon-tour-guide"></span>
@@ -78,7 +91,9 @@ function Home() {
                 <div className="col-md-12 col-lg-6 d-flex align-self-stretch">
                   <div
                     className="services services-1 color-4 d-block img"
-                    style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/images/services-4.jpg)` }}
+                    style={{
+                      backgroundImage: `url(${process.env.PUBLIC_URL}/images/services-4.jpg)`,
+                    }}
                   >
                     <div className="icon d-flex align-items-center justify-content-center">
                       <span className="flaticon-map"></span>

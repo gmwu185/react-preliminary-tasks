@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
+
+import { SwalLoader } from '../vendorModule/Swal';
+
 import BreadcrumbHeader from './BreadcrumbHeader';
 import SelecteArea from './SelecteArea';
 import Attractions from './Attractions';
@@ -30,6 +33,10 @@ function TourList() {
       data: filterData,
     });
   };
+
+  useEffect(() => {
+    SwalLoader();
+  }, []);
 
   useEffect(() => {
     setAreaSelected((status) => ({ ...status, data: tourDatas }));

@@ -1,4 +1,7 @@
+import { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
+
+import { SwalLoader } from './vendorModule/Swal';
 
 import NotFound from './components/NotFound';
 import Layout from './components/Layout';
@@ -10,6 +13,9 @@ import TourList from './components/TourList';
 import AutoScrollToTop from './components/AutoScrollToTop';
 
 function App() {
+  useEffect(() => {
+    SwalLoader();
+  }, []);
   return (
     <>
       <AutoScrollToTop>
