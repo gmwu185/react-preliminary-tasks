@@ -24,6 +24,10 @@ Notiflix.Confirm.init({
   okButtonBackground: NotiflixDangerColor,
   borderRadius: '8px',
 });
+Notiflix.Notify.init({
+  position: 'right-bottom',
+  clickToClose: true,
+});
 
 function App() {
   const [token, setToken] = useState(localStorage.getItem('token') || null);
