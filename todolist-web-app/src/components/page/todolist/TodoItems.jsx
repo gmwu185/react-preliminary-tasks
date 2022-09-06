@@ -57,8 +57,8 @@ const TodoItems = () => {
         </ul>
         <div className="todoList_statistics">
           <p>
-            {todosData.filter((todo) => todo.completed_at !== null).length}{' '}
-            個已完成項目
+            {todosData.filter((todo) => todo.completed_at === null).length}{' '}
+            個待完成項目
           </p>
           <a href={hrefLink} onClick={(e) => delAllTodoCompleted(e)}>
             清除已完成項目
