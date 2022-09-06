@@ -15,6 +15,10 @@ const NewTodoInput = () => {
   const addTodo = (e) => {
     if (!newTodo) {
       Notiflix.Notify.failure('請正確輸入文字內容！');
+    } else if (/(^\s)/.test(newTodo)) {
+      Notiflix.Notify.failure(
+        '輸入待辦內容開頭或全部不能都是空格，請重新更改待辦內容！'
+      );
     } else {
       const asyncAddTodo = async () => {
         const addTodoRes = await api_addTodo(token, newTodo);
@@ -23,9 +27,13 @@ const NewTodoInput = () => {
           const todoListRes = await api_todoList(token);
           const todoListResJson = await todoListRes.json();
           setTodosData(todoListResJson.todos);
-          Notiflix.Notify.success('成功新增 TODO 資料！');
+          Notiflix.Notify.success('成功新增待辦項目！');
         } else {
-          Notiflix.Notify.failure(addTodoResJson.message);
+          addTodoResJson.message
+            ? Notiflix.Notify.failure(addTodoResJson.message)
+            : Notiflix.Notify.failure(
+                '待辦內容不能空格或非正常字元，請重新輸入！'
+              );
         }
       };
       asyncAddTodo();
