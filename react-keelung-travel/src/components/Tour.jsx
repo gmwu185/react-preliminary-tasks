@@ -58,15 +58,15 @@ function Tour() {
       /** cors proxy service use-3
        * https://github.com/Freeboard/thingproxy
        */
-      fetch(
-        "https://thingproxy.freeboard.io/fetch/https://tour.klcg.gov.tw/data/attractions.json"
-      )
-        .then((res) => res.json())
-        .then(proxySuccessResult)
-        .catch((err) => {
-          console.log(err);
-          return msgSwal(`發生錯誤：${err.message}`);
-        });
+      // fetch(
+      //   "https://thingproxy.freeboard.io/fetch/https://tour.klcg.gov.tw/data/attractions.json"
+      // )
+      //   .then((res) => res.json())
+      //   .then(proxySuccessResult)
+      //   .catch((err) => {
+      //     console.log(err);
+      //     return msgSwal(`發生錯誤：${err.message}`);
+      //   });
       /* /cors proxy service use-3 */
 
       /** cors proxy service use-4
@@ -79,6 +79,18 @@ function Tour() {
       //   })
       //   .catch(err => console.log('allorigins err', err))
       /* /cors proxy service use-4 */
+
+      /* 直接取用政府資料開放平臺資料 json 檔 */
+      fetch(
+        `${process.env.PUBLIC_URL}/data/attractions.json`
+      )
+        .then((res) => res.json())
+        .then(proxySuccessResult)
+        .catch((err) => {
+          console.log(err);
+          return msgSwal(`發生錯誤：${err.message}`);
+        });
+      /* /直接取用政府資料開放平臺資料 json 檔 */
     }
 
     // eslint-disable-next-line
